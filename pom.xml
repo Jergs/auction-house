@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.demo</groupId>
     <artifactId>auction-house</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>auction-house</name>
     <description>auction-house</description>
     <properties>
@@ -47,6 +47,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Jergs/auction-house.git</developerConnection>
+    <tag>auction-house-0.0.1</tag>
   </scm>
 
 </project>
