@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.demo</groupId>
     <artifactId>auction-house</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>auction-house</name>
     <description>auction-house</description>
     <properties>
@@ -40,6 +40,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
         </plugins>
@@ -47,7 +48,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Jergs/auction-house.git</developerConnection>
-    <tag>auction-house-0.0.1</tag>
   </scm>
 
 </project>
