@@ -12,4 +12,5 @@ public class Lot {
     private Double bidPrice;
     private Person seller;
     private LocalDate expireDate;
+    private AuctionHouse auctionHouse;
 }
