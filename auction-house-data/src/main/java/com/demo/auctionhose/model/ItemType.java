@@ -1,4 +1,4 @@
-package com.demo.auctionhouse.model;
+package com.demo.auctionhose.model;
 
 import lombok.Data;
 
