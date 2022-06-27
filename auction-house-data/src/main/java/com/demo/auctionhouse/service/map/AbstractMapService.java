@@ -1,4 +1,4 @@
-package com.demo.auctionhose.service.map;
+package com.demo.auctionhouse.service.map;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,11 +1,13 @@
-package com.demo.auctionhose.service.map;
+package com.demo.auctionhouse.service.map;
 
-import com.demo.auctionhose.model.Item;
-import com.demo.auctionhose.service.CrudService;
+import com.demo.auctionhouse.model.Item;
+import com.demo.auctionhouse.service.ItemService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class ItemMapService extends AbstractMapService<Item, Long> implements CrudService<Item, Long> {
+@Service
+public class ItemMapService extends AbstractMapService<Item, Long> implements ItemService {
     @Override
     public Set<Item> findAll() {
         return super.findAll();

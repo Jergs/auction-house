@@ -5,6 +5,30 @@
     <title>Lots</title>
 </head>
 <body>
-<h1 th:text="'List of Lots'"></h1>
+<!--/*@thymesVar id="lot" type="com.demo.auctionhouse.model.Lot"*/-->
+<h1 th:text="'List of Lots'">Lots list</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Item name</th>
+        <th>Original price</th>
+        <th>Bid price</th>
+        <th>Expire Date</th>
+        <th>Seller</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lot : ${lots}">
+        <td th:text="${lot?.id}">1</td>
+        <td th:text="${lot?.item?.name}">item name</td>
+        <td th:text="${lot?.originPrice}">10000.0</td>
+        <td th:text="${lot?.bidPrice}">10000.0</td>
+        <td th:text="${lot?.expireDate}">01.01.2022</td>
+        <td th:text="${lot?.seller?.name}">Chuck</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
