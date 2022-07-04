@@ -14,7 +14,7 @@ public class LotController {
     private final LotService lotService;
 
     @RequestMapping({"/", ""})
-    public String listItems(Model model) {
+    public String listLots(Model model) {
         model.addAttribute("lots", lotService.findAll());
         return "lots/index";
     }

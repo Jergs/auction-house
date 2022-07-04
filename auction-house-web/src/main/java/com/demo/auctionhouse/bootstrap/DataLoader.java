@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
         AuctionHouse auctionHouse = createAuctionHouse(1L, "My auction house");
 
         Item item1 = createItem(1L, "Master Sword", ItemType.WEAPON);
-        Item item2 = createItem(2L, "Mas ter Plate", ItemType.ARMOR);
+        Item item2 = createItem(2L, "Master Plate", ItemType.ARMOR);
 
         Person person1 = createPerson(1L, "Karl", 10000.0);
         Person person2 = createPerson(2L, "Charley", 5000.0);

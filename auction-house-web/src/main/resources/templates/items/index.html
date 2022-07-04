@@ -2,9 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Items</title>
+    <title>Lots</title>
 </head>
 <body>
-<h1 th:text="'List of Items'"></h1>
+<!--/*@thymesVar id="item" type="com.demo.auctionhouse.model.Item"*/-->
+<h1 th:text="'List of items'">Lots list</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Item name</th>
+        <th>Item type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item?.id}">1</td>
+        <td th:text="${item?.name}">item name</td>
+        <td th:text="${item?.type}">10000.0</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
