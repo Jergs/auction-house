@@ -26,7 +26,7 @@ public class AuctionMapService extends AbstractMapService<AuctionHouse, Long> im
 
     @Override
     public AuctionHouse save(AuctionHouse object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

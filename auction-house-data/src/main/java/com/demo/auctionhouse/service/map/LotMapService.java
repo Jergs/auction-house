@@ -26,7 +26,7 @@ public class LotMapService extends AbstractMapService<Lot, Long> implements LotS
 
     @Override
     public Lot save(Lot object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

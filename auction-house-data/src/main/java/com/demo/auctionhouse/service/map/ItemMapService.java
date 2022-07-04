@@ -25,7 +25,7 @@ public class ItemMapService extends AbstractMapService<Item, Long> implements It
 
     @Override
     public Item save(Item object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override
