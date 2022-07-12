@@ -48,7 +48,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Jergs/auction-house.git</developerConnection>
-    <tag>HEAD</tag>
   </scm>
 
 </project>
