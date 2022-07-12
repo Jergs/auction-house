@@ -13,7 +13,7 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @RequestMapping({"/", ""})
+    @RequestMapping({"/", "", "/find"})
     public String listItems(Model model) {
         model.addAttribute("items", itemService.findAll());
         return "items/index";

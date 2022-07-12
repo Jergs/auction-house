@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body}, 'lots')}">
 <head>
     <meta charset="UTF-8">
     <title>Lots</title>
 </head>
 <body>
 <!--/*@thymesVar id="lot" type="com.demo.auctionhouse.model.Lot"*/-->
-<h1 th:text="'List of Lots'">Lots list</h1>
+<h2 th:text="'List of Lots'">Lots list</h2>
 
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Item name</th>
-        <th>Item type</th>
-        <th>Original price</th>
-        <th>Bid price</th>
-        <th>Expire Date</th>
-        <th>Seller</th>
+        <th style="width: 150px;">Id</th>
+        <th style="width: 150px;">Item name</th>
+        <th style="width: 150px;">Item type</th>
+        <th style="width: 150px;">Original price</th>
+        <th style="width: 150px;">Bid price</th>
+        <th style="width: 150px;">Expire Date</th>
+        <th style="width: 150px;">Seller</th>
     </tr>
     </thead>
     <tbody>

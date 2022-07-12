@@ -18,4 +18,9 @@ public class LotController {
         model.addAttribute("lots", lotService.findAll());
         return "lots/index";
     }
+
+    @RequestMapping("/find")
+    public String findItems() {
+        return "notimplemented";
+    }
 }

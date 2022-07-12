@@ -9,4 +9,5 @@ public class Item extends BaseEntity {
 
     private String name;
     private ItemType type;
+    private String description;
 }
