@@ -1,8 +1,6 @@
-package com.demo.auctionhose.service;
+package com.demo.auctionhouse.service;
 
-import com.demo.auctionhose.model.Person;
-
-import java.util.List;
+import com.demo.auctionhouse.model.Person;
 
 public interface PersonService extends CrudService<Person, Long> {
 

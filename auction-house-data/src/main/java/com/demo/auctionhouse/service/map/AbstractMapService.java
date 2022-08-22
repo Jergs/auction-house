@@ -1,6 +1,6 @@
-package com.demo.auctionhose.service.map;
+package com.demo.auctionhouse.service.map;
 
-import com.demo.auctionhose.model.BaseEntity;
+import com.demo.auctionhouse.model.BaseEntity;
 
 import java.util.*;
 

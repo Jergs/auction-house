@@ -1,4 +1,4 @@
-package com.demo.auctionhose.service;
+package com.demo.auctionhouse.service;
 
 import java.util.Set;
 

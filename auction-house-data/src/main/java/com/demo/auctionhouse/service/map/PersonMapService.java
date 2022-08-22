@@ -1,14 +1,12 @@
-package com.demo.auctionhose.service.map;
+package com.demo.auctionhouse.service.map;
 
-import com.demo.auctionhose.model.Person;
-import com.demo.auctionhose.service.PersonService;
-import org.springframework.context.annotation.Profile;
+import com.demo.auctionhouse.model.Person;
+import com.demo.auctionhouse.service.PersonService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-@Profile({"default", "map"})
 public class PersonMapService extends AbstractMapService<Person, Long> implements PersonService {
 
     @Override
