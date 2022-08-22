@@ -1,9 +1,15 @@
 package com.demo.auctionhose.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 @Data
-public class Person {
+@EqualsAndHashCode(callSuper = true)
+public class Person extends BaseEntity {
+
     private String name;
     private Double money;
+    private List<Item> items;
 }

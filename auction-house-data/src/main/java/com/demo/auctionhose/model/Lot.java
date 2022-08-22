@@ -1,16 +1,19 @@
 package com.demo.auctionhose.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
-public class Lot {
+@EqualsAndHashCode(callSuper = true)
+public class Lot extends BaseEntity {
 
     private Item item;
     private Double originPrice;
     private Double bidPrice;
     private Person seller;
-    private LocalDate expireDate;
+    private Person bestBidPerson;
+    private LocalDateTime expireDateTime;
     private AuctionHouse auctionHouse;
 }

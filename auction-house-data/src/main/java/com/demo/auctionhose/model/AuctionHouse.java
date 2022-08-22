@@ -1,8 +1,10 @@
 package com.demo.auctionhose.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class AuctionHouse {
+@EqualsAndHashCode(callSuper = true)
+public class AuctionHouse extends BaseEntity {
     private String name;
 }
