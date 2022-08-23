@@ -1,10 +1,18 @@
 package com.demo.auctionhouse.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "item_type")
 public class ItemType extends BaseEntity {
+
+    @Column(name = "type")
     private String type;
 }

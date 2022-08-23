@@ -1,10 +1,19 @@
 package com.demo.auctionhouse.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
+import javax.persistence.*;
+import java.util.Set;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "auction_house")
 public class AuctionHouse extends BaseEntity {
+
+    @Column(name = "name")
     private String name;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "auctionHouse")
+    private Set<Lot> lots;
 }
