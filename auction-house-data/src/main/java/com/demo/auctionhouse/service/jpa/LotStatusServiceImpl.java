@@ -2,7 +2,7 @@ package com.demo.auctionhouse.service.jpa;
 
 import com.demo.auctionhouse.model.LotStatus;
 import com.demo.auctionhouse.repository.LotStatusRepository;
-import com.demo.auctionhouse.service.map.LotStatusService;
+import com.demo.auctionhouse.service.LotStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;

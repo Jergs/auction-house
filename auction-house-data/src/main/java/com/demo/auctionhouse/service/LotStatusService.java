@@ -1,7 +1,6 @@
-package com.demo.auctionhouse.service.map;
+package com.demo.auctionhouse.service;
 
 import com.demo.auctionhouse.model.LotStatus;
-import com.demo.auctionhouse.service.CrudService;
 
 public interface LotStatusService extends CrudService<LotStatus, Long> {
 }
