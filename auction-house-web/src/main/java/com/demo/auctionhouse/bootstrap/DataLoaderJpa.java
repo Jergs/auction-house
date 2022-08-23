@@ -1,7 +1,8 @@
 package com.demo.auctionhouse.bootstrap;
 
 import com.demo.auctionhouse.model.*;
-import com.demo.auctionhouse.service.*;
+import com.demo.auctionhouse.service.AuctionHouseService;
+import com.demo.auctionhouse.service.ItemTypeService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -12,12 +13,9 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-@Profile({"default","map"})
-public class DataLoader implements CommandLineRunner {
+@Profile("jpa")
+public class DataLoaderJpa implements CommandLineRunner {
 
-    private final PersonService personService;
-    private final LotService lotService;
-    private final ItemService itemService;
     private final ItemTypeService itemTypeService;
     private final AuctionHouseService auctionHouseService;
 
@@ -26,7 +24,7 @@ public class DataLoader implements CommandLineRunner {
 
         int count = itemTypeService.findAll().size();
 
-        if (count == 0 ){
+        if (count == 0) {
             loadData();
         }
     }
@@ -43,38 +41,39 @@ public class DataLoader implements CommandLineRunner {
         Person chack = createPerson("Chack", 10000.0, List.of(sword, helmet));
         Person patrick = createPerson("Patrick", 20000.0, List.of(bow, chainMail));
 
-        AuctionHouse auctionHouse = createAuctionHouse("My Auction");
-
-        Lot lot = createLot(auctionHouse, bow, patrick, chack, 5000.0, 7000.0,
+        Lot lot = createLot(bow, patrick, chack, 5000.0, 7000.0,
                 LocalDateTime.now().plusDays(2));
 
-        Lot lot2 = createLot(auctionHouse, helmet, chack, patrick, 3000.0, 3500.0,
+        Lot lot2 = createLot(helmet, chack, patrick, 3000.0, 3500.0,
                 LocalDateTime.now().plusDays(2));
+
+        AuctionHouse auctionHouse = createAuctionHouse("My Auction", List.of(lot, lot2));
+        auctionHouseService.save(auctionHouse);
     }
 
-    private Lot createLot(AuctionHouse house,
-                          Item item,
+    private Lot createLot(Item item,
                           Person person,
                           Person bestBidPerson,
                           Double originPrice,
                           Double bidPrice,
                           LocalDateTime expireDateTime) {
         Lot lot = new Lot();
-        lot.setAuctionHouse(house);
         lot.setItem(item);
         lot.setSeller(person);
         lot.setBestBidPerson(bestBidPerson);
         lot.setOriginPrice(originPrice);
         lot.setBidPrice(bidPrice);
         lot.setExpireDateTime(expireDateTime);
-        lotService.save(lot);
+        person.getLots().add(lot);
+        bestBidPerson.getBidLots().add(lot);
         return lot;
     }
 
-    private AuctionHouse createAuctionHouse(String name) {
+    private AuctionHouse createAuctionHouse(String name, List<Lot> lots) {
         AuctionHouse auctionHouse = new AuctionHouse();
+        auctionHouse.getLots().addAll(lots);
+        lots.forEach(lot -> lot.setAuctionHouse(auctionHouse));
         auctionHouse.setName(name);
-        auctionHouseService.save(auctionHouse);
         return auctionHouse;
     }
 
@@ -89,7 +88,6 @@ public class DataLoader implements CommandLineRunner {
         Item item = new Item();
         item.setName(name);
         item.setType(type);
-        itemService.save(item);
         return item;
     }
 
@@ -97,8 +95,7 @@ public class DataLoader implements CommandLineRunner {
         Person person = new Person();
         person.setName(name);
         person.setMoney(money);
-        person.setItems(items);
-        personService.save(person);
+        person.getItems().addAll(items);
         return person;
     }
 }

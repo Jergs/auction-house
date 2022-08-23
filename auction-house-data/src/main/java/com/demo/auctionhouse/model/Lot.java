@@ -19,16 +19,16 @@ public class Lot extends BaseEntity {
     @Column(name = "expire_date_time")
     private LocalDateTime expireDateTime;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
     private Person seller;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "best_bid_person_id")
     private Person bestBidPerson;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "auction_house_id")
     private AuctionHouse auctionHouse;
 }

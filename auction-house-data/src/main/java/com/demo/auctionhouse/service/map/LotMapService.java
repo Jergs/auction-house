@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-@Profile("map")
+@Profile({"default","map"})
 public class LotMapService extends AbstractMapService<Lot, Long> implements LotService {
 
     @Override

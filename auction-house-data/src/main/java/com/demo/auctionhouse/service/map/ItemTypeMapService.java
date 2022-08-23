@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-@Profile("map")
+@Profile({"default","map"})
 public class ItemTypeMapService extends AbstractMapService<ItemType, Long> implements ItemTypeService {
 
     @Override
