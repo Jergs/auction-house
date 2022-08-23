@@ -10,25 +10,25 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th style="width: 150px;">Auction house</th>
         <th style="width: 150px;">Item name</th>
         <th style="width: 150px;">Seller Name</th>
         <th style="width: 150px;">Best Bid Name</th>
         <th style="width: 150px;">Expire Date/Time</th>
         <th style="width: 150px;">Origin Price</th>
         <th style="width: 150px;">Bid Price</th>
+        <th style="width: 150px;">Status</th>
     </tr>
     </thead>
 
     <tbody>
     <tr th:each="lot: ${lots}">
-        <td th:text="${lot?.getAuctionHouse()?.getName()}">Auction house</td>
         <td th:text="${lot?.getItem()?.getName()}">Item Name</td>
         <td th:text="${lot?.getSeller()?.getName()}">Seller Name</td>
         <td th:text="${lot?.getBestBidPerson()?.getName()}">Best Bid Name</td>
         <td th:text="${lot?.getExpireDateTime()}">Expire Date/Time</td>
         <td th:text="${lot?.getOriginPrice()}">Origin Price</td>
         <td th:text="${lot?.getBidPrice()}">Origin Price</td>
+        <td th:text="${lot?.getStatus()?.getStatus()}">Status</td>
     </tr>
     </tbody>
 </table>
