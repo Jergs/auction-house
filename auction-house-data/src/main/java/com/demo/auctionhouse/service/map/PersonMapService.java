@@ -2,11 +2,13 @@ package com.demo.auctionhouse.service.map;
 
 import com.demo.auctionhouse.model.Person;
 import com.demo.auctionhouse.service.PersonService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("map")
 public class PersonMapService extends AbstractMapService<Person, Long> implements PersonService {
 
     @Override
@@ -35,7 +37,7 @@ public class PersonMapService extends AbstractMapService<Person, Long> implement
     }
 
     @Override
-    public Person findByLastName(String lastName) {
+    public Person findByName(String lastName) {
         return null;
     }
 }

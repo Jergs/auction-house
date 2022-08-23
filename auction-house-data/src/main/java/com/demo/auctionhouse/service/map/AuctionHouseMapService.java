@@ -2,11 +2,13 @@ package com.demo.auctionhouse.service.map;
 
 import com.demo.auctionhouse.model.AuctionHouse;
 import com.demo.auctionhouse.service.AuctionHouseService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("map")
 public class AuctionHouseMapService extends AbstractMapService<AuctionHouse, Long> implements AuctionHouseService {
 
     @Override

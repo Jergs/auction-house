@@ -4,5 +4,5 @@ import com.demo.auctionhouse.model.Person;
 
 public interface PersonService extends CrudService<Person, Long> {
 
-    Person findByLastName(String lastName);
+    Person findByName(String name);
 }
