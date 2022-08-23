@@ -13,7 +13,7 @@ public class LotController {
 
     private final LotService lotService;
 
-    @RequestMapping({"/", ""})
+    @RequestMapping({"/", "", "/find"})
     public String listLots(Model model) {
         model.addAttribute("lots", lotService.findAll());
         return "/lots/index";

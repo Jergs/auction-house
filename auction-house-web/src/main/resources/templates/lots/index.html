@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'lots')}">
 <head>
     <meta charset="UTF-8">
     <title>Lots Index</title>
 </head>
 <body>
-<h1 th:text="'Lots Index Page'">Lots Index page</h1>
+<h2 th:text="'Lots Index Page'">Lots Index page</h2>
 
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>Auction house</th>
-        <th>Item name</th>
-        <th>Seller Name</th>
-        <th>Best Bid Name</th>
-        <th>Expire Date/Time</th>
-        <th>Origin Price</th>
-        <th>Bid Price</th>
+        <th style="width: 150px;">Auction house</th>
+        <th style="width: 150px;">Item name</th>
+        <th style="width: 150px;">Seller Name</th>
+        <th style="width: 150px;">Best Bid Name</th>
+        <th style="width: 150px;">Expire Date/Time</th>
+        <th style="width: 150px;">Origin Price</th>
+        <th style="width: 150px;">Bid Price</th>
     </tr>
     </thead>
 
