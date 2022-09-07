@@ -23,11 +23,12 @@ public class Person extends BaseEntity {
     @Setter
     @Column(name = "money")
     private Double money;
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "person")
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            mappedBy = "person", fetch = FetchType.LAZY)
     private List<Item> items;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestBidPerson")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestBidPerson", fetch = FetchType.LAZY)
     private Set<Lot> bidLots;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seller")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seller", fetch = FetchType.LAZY)
     private Set<Lot> lots;
 
     public List<Item> getItems() {

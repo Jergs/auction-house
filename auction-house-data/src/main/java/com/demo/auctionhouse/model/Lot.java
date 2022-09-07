@@ -21,6 +21,6 @@ public class Lot extends BaseEntity {
     @JoinColumn(name = "best_bid_person_id")
     private Person bestBidPerson;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "description")
+    @JoinColumn(name = "description_id")
     private LotDescription description;
 }
