@@ -1,6 +1,6 @@
 package com.demo.auctionhouse.service.jpa;
 
-import com.demo.auctionhouse.model.LotDescription;
+import com.demo.auctionhouse.model.LotDetail;
 import com.demo.auctionhouse.repository.LotDescriptionRepository;
 import com.demo.auctionhouse.service.LotDecriptionService;
 import lombok.AllArgsConstructor;
@@ -18,22 +18,22 @@ public class LotDescriptionServiceImpl implements LotDecriptionService {
     private final LotDescriptionRepository lotDescriptionRepository;
 
     @Override
-    public Set<LotDescription> findAll() {
+    public Set<LotDetail> findAll() {
         return new HashSet<>(lotDescriptionRepository.findAll());
     }
 
     @Override
-    public LotDescription findById(Long aLong) {
+    public LotDetail findById(Long aLong) {
         return lotDescriptionRepository.findById(aLong).orElse(null);
     }
 
     @Override
-    public LotDescription save(LotDescription object) {
+    public LotDetail save(LotDetail object) {
         return lotDescriptionRepository.save(object);
     }
 
     @Override
-    public void delete(LotDescription object) {
+    public void delete(LotDetail object) {
         lotDescriptionRepository.delete(object);
     }
 

@@ -1,10 +1,10 @@
 package com.demo.auctionhouse.bootstrap;
 
 import com.demo.auctionhouse.model.*;
+import com.demo.auctionhouse.model.enums.LotStatus;
 import com.demo.auctionhouse.service.ItemTypeService;
 import com.demo.auctionhouse.service.LotDecriptionService;
 import com.demo.auctionhouse.service.LotService;
-import com.demo.auctionhouse.service.LotStatusService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.demo.auctionhouse.model.enums.LotStatus.ACTIVE;
+import static com.demo.auctionhouse.model.enums.LotStatus.CLOSED;
+
 @Component
 @AllArgsConstructor
 @Profile("jpa")
@@ -20,7 +23,6 @@ public class DataLoaderJpa implements CommandLineRunner {
 
     private final ItemTypeService itemTypeService;
     private final LotService lotService;
-    private final LotStatusService lotStatusService;
     private final LotDecriptionService lotDecriptionService;
 
     @Override
@@ -37,9 +39,6 @@ public class DataLoaderJpa implements CommandLineRunner {
         ItemType weapon = createItemType("Weapon");
         ItemType armor = createItemType("Armor");
 
-        LotStatus active = createLotStatus("Active");
-        LotStatus closed = createLotStatus("Closed");
-
         Item chainMail = createItem("Chain Mail", armor);
         Item helmet = createItem("Helmet", armor);
         Item sword = createItem("Sword", weapon);
@@ -48,10 +47,10 @@ public class DataLoaderJpa implements CommandLineRunner {
         Person chack = createPerson("Chack", 10000.0, List.of(sword, helmet));
         Person patrick = createPerson("Patrick", 20000.0, List.of(bow, chainMail));
 
-        LotDescription description = createLotDescription(5000.0, 7000.0,
-                LocalDateTime.now().plusDays(2), active);
-        LotDescription description2 = createLotDescription(3000.0, 3500.0,
-                LocalDateTime.now().minusDays(2), closed);
+        LotDetail description = createLotDescription(5000.0, 7000.0,
+                LocalDateTime.now().plusDays(2), ACTIVE);
+        LotDetail description2 = createLotDescription(3000.0, 3500.0,
+                LocalDateTime.now().minusDays(2), CLOSED);
 
         Lot lot = createLot(bow, patrick, chack, description);
 
@@ -64,7 +63,7 @@ public class DataLoaderJpa implements CommandLineRunner {
     private Lot createLot(Item item,
                           Person person,
                           Person bestBidPerson,
-                          LotDescription description) {
+                          LotDetail description) {
         Lot lot = new Lot();
         lot.setItem(item);
         lot.setSeller(person);
@@ -82,24 +81,17 @@ public class DataLoaderJpa implements CommandLineRunner {
         return itemType;
     }
 
-    private LotDescription createLotDescription(Double originPrice,
-                                                Double bidPrice,
-                                                LocalDateTime dateTime,
-                                                LotStatus status) {
-        LotDescription description = new LotDescription();
-        description.setOriginPrice(originPrice);
+    private LotDetail createLotDescription(Double originPrice,
+                                           Double bidPrice,
+                                           LocalDateTime dateTime,
+                                           LotStatus status) {
+        LotDetail description = new LotDetail();
+        description.setInitialPrice(originPrice);
         description.setBidPrice(bidPrice);
         description.setExpireDateTime(dateTime);
         description.setStatus(status);
         lotDecriptionService.save(description);
         return description;
-    }
-
-    private LotStatus createLotStatus(String name) {
-        LotStatus lotStatus = new LotStatus();
-        lotStatus.setStatus(name);
-        lotStatusService.save(lotStatus);
-        return lotStatus;
     }
 
     private Item createItem(String name, ItemType type) {

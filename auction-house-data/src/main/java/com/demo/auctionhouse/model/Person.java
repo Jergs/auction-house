@@ -12,6 +12,7 @@ import java.util.Set;
 import static java.util.Objects.isNull;
 
 @Entity
+
 @Table(name = "person")
 public class Person extends BaseEntity {
 
@@ -21,7 +22,7 @@ public class Person extends BaseEntity {
     private String name;
     @Getter
     @Setter
-    @Column(name = "money")
+    @Column(name = "money_amount")
     private Double money;
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             mappedBy = "person", fetch = FetchType.LAZY)

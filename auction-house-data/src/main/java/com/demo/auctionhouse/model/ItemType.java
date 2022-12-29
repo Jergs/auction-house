@@ -15,4 +15,6 @@ public class ItemType extends BaseEntity {
 
     @Column(name = "type")
     private String type;
+    @Column(name = "description")
+    private String description;
 }

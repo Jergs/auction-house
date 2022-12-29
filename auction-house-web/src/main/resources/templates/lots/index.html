@@ -26,7 +26,7 @@
         <td th:text="${lot?.getSeller()?.getName()}">Seller Name</td>
         <td th:text="${lot?.getBestBidPerson()?.getName()}">Best Bid Name</td>
         <td th:text="${lot?.getDescription()?.getExpireDateTime()}">Expire Date/Time</td>
-        <td th:text="${lot?.getDescription()?.getOriginPrice()}">Origin Price</td>
+        <td th:text="${lot?.getDescription()?.getInitialPrice()}">Origin Price</td>
         <td th:text="${lot?.getDescription()?.getBidPrice()}">Bid Price</td>
         <td th:text="${lot?.getDescription()?.getStatus()?.getStatus()}">Status</td>
     </tr>

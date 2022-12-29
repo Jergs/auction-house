@@ -1,6 +1,6 @@
 package com.demo.auctionhouse.service;
 
-import com.demo.auctionhouse.model.LotDescription;
+import com.demo.auctionhouse.model.LotDetail;
 
-public interface LotDecriptionService extends CrudService<LotDescription, Long> {
+public interface LotDecriptionService extends CrudService<LotDetail, Long> {
 }

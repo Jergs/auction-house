@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "lots")
+@Table(name = "lot")
 public class Lot extends BaseEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -21,6 +21,6 @@ public class Lot extends BaseEntity {
     @JoinColumn(name = "best_bid_person_id")
     private Person bestBidPerson;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "description_id")
-    private LotDescription description;
+    @JoinColumn(name = "detail_id")
+    private LotDetail description;
 }
