@@ -3,7 +3,7 @@ package com.demo.auctionhouse.bootstrap;
 import com.demo.auctionhouse.model.*;
 import com.demo.auctionhouse.model.enums.LotStatus;
 import com.demo.auctionhouse.service.ItemTypeService;
-import com.demo.auctionhouse.service.LotDecriptionService;
+import com.demo.auctionhouse.service.LotDetailService;
 import com.demo.auctionhouse.service.LotService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -23,7 +23,7 @@ public class DataLoaderJpa implements CommandLineRunner {
 
     private final ItemTypeService itemTypeService;
     private final LotService lotService;
-    private final LotDecriptionService lotDecriptionService;
+    private final LotDetailService lotDetailService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,8 +44,8 @@ public class DataLoaderJpa implements CommandLineRunner {
         Item sword = createItem("Sword", weapon);
         Item bow = createItem("Bow", weapon);
 
-        Person chack = createPerson("Chack", 10000.0, List.of(sword, helmet));
-        Person patrick = createPerson("Patrick", 20000.0, List.of(bow, chainMail));
+        User chack = createPerson("Chack", 10000.0, List.of(sword, helmet));
+        User patrick = createPerson("Patrick", 20000.0, List.of(bow, chainMail));
 
         LotDetail description = createLotDescription(5000.0, 7000.0,
                 LocalDateTime.now().plusDays(2), ACTIVE);
@@ -61,15 +61,15 @@ public class DataLoaderJpa implements CommandLineRunner {
     }
 
     private Lot createLot(Item item,
-                          Person person,
-                          Person bestBidPerson,
+                          User user,
+                          User bestBidPerson,
                           LotDetail description) {
         Lot lot = new Lot();
         lot.setItem(item);
-        lot.setSeller(person);
-        lot.setBestBidPerson(bestBidPerson);
-        lot.setDescription(description);
-        person.getLots().add(lot);
+        lot.setSeller(user);
+        lot.setBestBidUser(bestBidPerson);
+        lot.setDetail(description);
+        user.getLots().add(lot);
         bestBidPerson.getBidLots().add(lot);
         return lot;
     }
@@ -90,7 +90,7 @@ public class DataLoaderJpa implements CommandLineRunner {
         description.setBidPrice(bidPrice);
         description.setExpireDateTime(dateTime);
         description.setStatus(status);
-        lotDecriptionService.save(description);
+        lotDetailService.save(description);
         return description;
     }
 
@@ -101,11 +101,11 @@ public class DataLoaderJpa implements CommandLineRunner {
         return item;
     }
 
-    private Person createPerson(String name, Double money, List<Item> items) {
-        Person person = new Person();
-        person.setName(name);
-        person.setMoney(money);
-        person.getItems().addAll(items);
-        return person;
+    private User createPerson(String name, Double money, List<Item> items) {
+        User user = new User();
+        user.setName(name);
+        user.setMoney(money);
+        user.getItems().addAll(items);
+        return user;
     }
 }

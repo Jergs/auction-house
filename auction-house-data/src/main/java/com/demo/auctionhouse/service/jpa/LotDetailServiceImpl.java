@@ -2,7 +2,7 @@ package com.demo.auctionhouse.service.jpa;
 
 import com.demo.auctionhouse.model.LotDetail;
 import com.demo.auctionhouse.repository.LotDescriptionRepository;
-import com.demo.auctionhouse.service.LotDecriptionService;
+import com.demo.auctionhouse.service.LotDetailService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Set;
 @Service
 @AllArgsConstructor
 @Profile("jpa")
-public class LotDescriptionServiceImpl implements LotDecriptionService {
+public class LotDetailServiceImpl implements LotDetailService {
 
     private final LotDescriptionRepository lotDescriptionRepository;
 

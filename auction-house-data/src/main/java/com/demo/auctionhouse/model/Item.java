@@ -17,6 +17,6 @@ public class Item extends BaseEntity {
     @JoinColumn(name = "type_id")
     private ItemType type;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "user_id")
+    private User userId;
 }

@@ -12,9 +12,8 @@ import java.util.Set;
 import static java.util.Objects.isNull;
 
 @Entity
-
-@Table(name = "person")
-public class Person extends BaseEntity {
+@Table(name = "user", schema = "public")
+public class User extends BaseEntity {
 
     @Getter
     @Setter
@@ -25,9 +24,9 @@ public class Person extends BaseEntity {
     @Column(name = "money_amount")
     private Double money;
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "person", fetch = FetchType.LAZY)
+            mappedBy = "userId", fetch = FetchType.LAZY)
     private List<Item> items;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestBidPerson", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestBidUser", fetch = FetchType.LAZY)
     private Set<Lot> bidLots;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seller", fetch = FetchType.LAZY)
     private Set<Lot> lots;

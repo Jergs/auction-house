@@ -60,10 +60,14 @@
             <span>Items</span>
           </li>
 
-          <li
-            th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','exclamation-triangle','Error')">
+          <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','exclamation-triangle','Error')">
             <span class="fa exclamation-triangle" aria-hidden="true"></span>
             <span>Error</span>
+          </li>
+
+          <li th:replace="::menuItem ('/user/detail','user','user detail page','th-list','User')">
+            <span class="fa exclamation-triangle" aria-hidden="true"></span>
+            <span>Account</span>
           </li>
 
         </ul>
