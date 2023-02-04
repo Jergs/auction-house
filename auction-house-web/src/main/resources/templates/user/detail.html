@@ -17,10 +17,10 @@
   </thead>
 
   <tbody>
-  <tr th:each="user: ${users}">
-    <td th:text="${user?.getName()}">Name</td>
-    <td th:text="${user?.getMoney()}">Money</td>
-    <td th:text="${user?.getItems()?.size()}">Size</td>
+  <tr th:each="userDetails: ${users}">
+    <td th:text="${userDetails?.getName()}">Name</td>
+    <td th:text="${userDetails?.getMoney()}">Money</td>
+    <td th:text="${userDetails?.getItems()?.size()}">Size</td>
   </tr>
   </tbody>
 </table>

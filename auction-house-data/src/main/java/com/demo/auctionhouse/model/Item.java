@@ -3,7 +3,7 @@ package com.demo.auctionhouse.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
@@ -18,5 +18,5 @@ public class Item extends BaseEntity {
     private ItemType type;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User userId;
+    private UserDetails userDetailsId;
 }

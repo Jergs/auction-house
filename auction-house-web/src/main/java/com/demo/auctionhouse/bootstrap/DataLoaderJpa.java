@@ -44,8 +44,8 @@ public class DataLoaderJpa implements CommandLineRunner {
         Item sword = createItem("Sword", weapon);
         Item bow = createItem("Bow", weapon);
 
-        User chack = createPerson("Chack", 10000.0, List.of(sword, helmet));
-        User patrick = createPerson("Patrick", 20000.0, List.of(bow, chainMail));
+        UserDetails chack = createPerson("Chack", 10000.0, List.of(sword, helmet));
+        UserDetails patrick = createPerson("Patrick", 20000.0, List.of(bow, chainMail));
 
         LotDetail description = createLotDescription(5000.0, 7000.0,
                 LocalDateTime.now().plusDays(2), ACTIVE);
@@ -61,15 +61,15 @@ public class DataLoaderJpa implements CommandLineRunner {
     }
 
     private Lot createLot(Item item,
-                          User user,
-                          User bestBidPerson,
+                          UserDetails userDetails,
+                          UserDetails bestBidPerson,
                           LotDetail description) {
         Lot lot = new Lot();
         lot.setItem(item);
-        lot.setSeller(user);
-        lot.setBestBidUser(bestBidPerson);
+        lot.setSeller(userDetails);
+        lot.setBestBidUserDetails(bestBidPerson);
         lot.setDetail(description);
-        user.getLots().add(lot);
+        userDetails.getLots().add(lot);
         bestBidPerson.getBidLots().add(lot);
         return lot;
     }
@@ -101,11 +101,11 @@ public class DataLoaderJpa implements CommandLineRunner {
         return item;
     }
 
-    private User createPerson(String name, Double money, List<Item> items) {
-        User user = new User();
-        user.setName(name);
-        user.setMoney(money);
-        user.getItems().addAll(items);
-        return user;
+    private UserDetails createPerson(String name, Double money, List<Item> items) {
+        UserDetails userDetails = new UserDetails();
+        userDetails.setName(name);
+        userDetails.setMoney(money);
+        userDetails.getItems().addAll(items);
+        return userDetails;
     }
 }

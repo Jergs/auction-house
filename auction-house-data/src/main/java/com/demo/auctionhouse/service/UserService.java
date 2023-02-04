@@ -1,8 +1,8 @@
 package com.demo.auctionhouse.service;
 
-import com.demo.auctionhouse.model.User;
+import com.demo.auctionhouse.model.UserDetails;
 
-public interface UserService extends CrudService<User, Long> {
+public interface UserService extends CrudService<UserDetails, Long> {
 
-    User findByName(String name);
+    UserDetails findByName(String name);
 }

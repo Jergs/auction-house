@@ -3,7 +3,7 @@ package com.demo.auctionhouse.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,8 +12,8 @@ import java.util.Set;
 import static java.util.Objects.isNull;
 
 @Entity
-@Table(name = "user", schema = "public")
-public class User extends BaseEntity {
+@Table(name = "user_details", schema = "public")
+public class UserDetails extends BaseEntity {
 
     @Getter
     @Setter
@@ -24,9 +24,9 @@ public class User extends BaseEntity {
     @Column(name = "money_amount")
     private Double money;
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "userId", fetch = FetchType.LAZY)
+            mappedBy = "userDetailsId", fetch = FetchType.LAZY)
     private List<Item> items;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestBidUser", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestBidUserDetails", fetch = FetchType.LAZY)
     private Set<Lot> bidLots;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seller", fetch = FetchType.LAZY)
     private Set<Lot> lots;
@@ -61,19 +61,4 @@ public class User extends BaseEntity {
         this.lots = lots;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getMoney() {
-        return money;
-    }
-
-    public void setMoney(Double money) {
-        this.money = money;
-    }
 }

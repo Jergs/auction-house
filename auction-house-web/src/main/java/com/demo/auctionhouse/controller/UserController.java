@@ -1,6 +1,6 @@
 package com.demo.auctionhouse.controller;
 
-import com.demo.auctionhouse.model.User;
+import com.demo.auctionhouse.model.UserDetails;
 import com.demo.auctionhouse.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class UserController {
     public String listItems(Model model) {
         model.addAttribute("users", userService.findAll()
                 .stream()
-                .sorted(Comparator.comparing(User::getId))
+                .sorted(Comparator.comparing(UserDetails::getId))
                 .collect(Collectors.toList()));
         return "/user/detail";
     }

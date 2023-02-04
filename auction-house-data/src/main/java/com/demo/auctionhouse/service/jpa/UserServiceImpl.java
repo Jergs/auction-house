@@ -1,6 +1,6 @@
 package com.demo.auctionhouse.service.jpa;
 
-import com.demo.auctionhouse.model.User;
+import com.demo.auctionhouse.model.UserDetails;
 import com.demo.auctionhouse.repository.UserRepository;
 import com.demo.auctionhouse.service.UserService;
 import lombok.AllArgsConstructor;
@@ -18,22 +18,22 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public Set<User> findAll() {
+    public Set<UserDetails> findAll() {
         return new HashSet<>(userRepository.findAll());
     }
 
     @Override
-    public User findById(Long aLong) {
+    public UserDetails findById(Long aLong) {
         return userRepository.findById(aLong).orElse(null);
     }
 
     @Override
-    public User save(User object) {
+    public UserDetails save(UserDetails object) {
         return userRepository.save(object);
     }
 
     @Override
-    public void delete(User object) {
+    public void delete(UserDetails object) {
         userRepository.delete(object);
     }
 
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByName(String name) {
+    public UserDetails findByName(String name) {
         return userRepository.findByName(name);
     }
 }
