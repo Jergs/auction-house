@@ -1,5 +1,6 @@
 package com.demo.auctionhouse.config;
 
+import javax.sql.DataSource;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,8 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -20,15 +19,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests()
-                .requestMatchers("/images/**").permitAll()
-                .requestMatchers("/**").hasAnyRole("ADMIN", "USER")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login").permitAll()
-                .and()
-                .logout().permitAll();
+        http.authorizeHttpRequests(request ->
+                        request.requestMatchers("/images/**").permitAll()
+                                .requestMatchers("/**").hasAnyRole("ADMIN", "USER")
+                                .anyRequest().authenticated())
+                .formLogin(form ->
+                        form.loginPage("/login").permitAll())
+                .logout(logout -> logout.permitAll());
         return http.build();
     }
 

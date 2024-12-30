@@ -1,20 +1,23 @@
 package com.demo.auctionhouse.bootstrap;
 
-import com.demo.auctionhouse.model.*;
+import static com.demo.auctionhouse.model.enums.LotStatus.ACTIVE;
+import static com.demo.auctionhouse.model.enums.LotStatus.CLOSED;
+
+import com.demo.auctionhouse.model.Item;
+import com.demo.auctionhouse.model.ItemType;
+import com.demo.auctionhouse.model.Lot;
+import com.demo.auctionhouse.model.LotDetail;
+import com.demo.auctionhouse.model.UserDetails;
 import com.demo.auctionhouse.model.enums.LotStatus;
 import com.demo.auctionhouse.service.ItemTypeService;
 import com.demo.auctionhouse.service.LotDetailService;
 import com.demo.auctionhouse.service.LotService;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import static com.demo.auctionhouse.model.enums.LotStatus.ACTIVE;
-import static com.demo.auctionhouse.model.enums.LotStatus.CLOSED;
 
 @Component
 @AllArgsConstructor
@@ -26,7 +29,7 @@ public class DataLoaderJpa implements CommandLineRunner {
     private final LotDetailService lotDetailService;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         int count = itemTypeService.findAll().size();
 
