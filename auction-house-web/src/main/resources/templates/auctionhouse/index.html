@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lots</title>
+</head>
+<body>
+<!--/*@thymesVar id="ah" type="com.demo.auctionhouse.model.AuctionHouse"*/-->
+<h1 th:text="'Auction Houses'">Lots list</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ah : ${auction_houses}">
+        <td th:text="${ah?.name}">item name</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

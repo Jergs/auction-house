@@ -23,4 +23,5 @@ public class Lot extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "detail_id")
     private LotDetail detail;
+  
 }
